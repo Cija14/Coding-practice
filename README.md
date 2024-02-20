@@ -11,7 +11,7 @@ I wish to cover these -
 ##Strings:
 - Reverse string
 
-##Linked List:
+# Linked List:
 - Reverse Singly Linked List
 - Reverse Doubly Linked List
 - Merger two linked lists
