@@ -2,16 +2,16 @@
 Just a personal checklist.
 
 I wish to cover these -
-##Arrays:
+## Arrays:
 - binary search
 - 2 pointer search
 - sliding window problem
 - kadane algorithm
 
-##Strings:
+## Strings:
 - Reverse string
 
-# Linked List:
+## Linked List:
 - Reverse Singly Linked List
 - Reverse Doubly Linked List
 - Merger two linked lists
@@ -20,14 +20,14 @@ I wish to cover these -
 - Find last nth element of list
 - Find if there is loop in list
 
-##Stacks and Queue:
+## Stacks and Queue:
 - Implement Stack (FIFO) using Arrays
 - Implement Stack using Linked List
 - Implement Queue using Linked List
 - Implement Queue using Arrays
 - Implement Circular buffer
 
-##Bit Manipulation:
+## Bit Manipulation:
 - atoi, itoa, itob, float to bin (link), atof
 - Add/Sub in binary (w/o using + operator) link
 - 2s complement (-ve numbers)
@@ -35,7 +35,7 @@ I wish to cover these -
 - range of 8 bit (-128 to 127 link)
 - represent float in binary (link)
 
-##Memory:
+## Memory:
 - implement aligned malloc/free ** link
 - implement malloc/free using static buffers (arrays)
 
