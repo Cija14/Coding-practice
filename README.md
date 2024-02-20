@@ -3,41 +3,40 @@ Just a personal checklist.
 
 I wish to cover these -
 ##Arrays:
+- binary search
+- 2 pointer search
+- sliding window problem
+- kadane algorithm
 
-binary search
-2 pointer search
-sliding window problem
-kadane algorithm
-Strings:
+##Strings:
+- Reverse string
 
-Reverse string
-Linked List:
+##Linked List:
+- Reverse Singly Linked List
+- Reverse Doubly Linked List
+- Merger two linked lists
+- Add, Delete, Search element of Linked List
+- Find Middle of List
+- Find last nth element of list
+- Find if there is loop in list
 
-Reverse Singly Linked List
-Reverse Doubly Linked List
-Merger two linked lists
-Add, Delete, Search element of Linked List
-Find Middle of List
-Find last nth element of list
-Find if there is loop in list
-Stacks and Queue:
+##Stacks and Queue:
+- Implement Stack (FIFO) using Arrays
+- Implement Stack using Linked List
+- Implement Queue using Linked List
+- Implement Queue using Arrays
+- Implement Circular buffer
 
-Implement Stack (FIFO) using Arrays
-Implement Stack using Linked List
-Implement Queue using Linked List
-Implement Queue using Arrays
-Implement Circular buffer
-Bit Manipulation:
+##Bit Manipulation:
+- atoi, itoa, itob, float to bin (link), atof
+- Add/Sub in binary (w/o using + operator) link
+- 2s complement (-ve numbers)
+- endianness swap (link)
+- range of 8 bit (-128 to 127 link)
+- represent float in binary (link)
 
-atoi, itoa, itob, float to bin (link), atof
-Add/Sub in binary (w/o using + operator) link
-2s complement (-ve numbers)
-endianness swap (link)
-range of 8 bit (-128 to 127 link)
-represent float in binary (link)
-Memory:
-
-implement aligned malloc/free ** link
-implement malloc/free using static buffers (arrays)
+##Memory:
+- implement aligned malloc/free ** link
+- implement malloc/free using static buffers (arrays)
 
 But logging my completed codes here:
