@@ -1,0 +1,57 @@
+/* In modular arithmetic, the divisor is the number by which the dividend (in this case, 1) is divided to find the remainder. 
+So, in 1 % 2, 2 is the divisor, and 1 is the dividend. 
+The result of this operation is 1, which is the remainder when 1 is divided by 2. */
+
+#include <stdio.h>
+void DectoBin(double num,int precision)
+{
+    // Handle negative numbers
+    if (num < 0) {
+        printf("-");
+        num = -num;
+    }
+   // Convert the integer part to binary
+    int intPart = (int)num;
+    int arr_integer[32];
+    int i = 0;
+    while (intPart > 0) {
+        arr_integer[i] = intPart % 2; // gives the remainder
+        intPart = intPart / 2;        // quotient
+        i++;
+    }
+    
+    // Print the binary representation of the integer part
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", arr_integer[j]);
+    }
+    
+    
+    // If the number is not an integer, handle the fractional part
+    double FractionalPart = num - (int)num;
+    // Convert the fractional part to binary
+    i=0; 
+    if(FractionalPart!=0) printf(".");
+    while(FractionalPart!=0 && i < precision)
+    {
+        FractionalPart = FractionalPart*2;
+        printf("%d",(int)FractionalPart);
+        FractionalPart = FractionalPart - (int)FractionalPart;
+        i++;
+    }
+}
+int main()
+{
+    double num;
+    int precision;
+
+    printf("Enter a number: ");
+    scanf("%lf", &num);
+
+    printf("Enter precision for fractional part: ");
+    scanf("%d", &precision);
+    
+    DectoBin(num, precision);
+
+    return 0;
+}
+
