@@ -1,1 +1,25 @@
 
+/* https://www.hackerrank.com/challenges/camelcase/problem?isFullScreen=true
+ * Complete the 'camelcase' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts STRING s as parameter.
+ * ASCII for lower case range is 97 to 122
+  upper case is 65 to 90
+/
+
+int camelcase(char* s) 
+{
+    int count=1;
+    
+    if(s[0]>=97 && s[0]<=122)
+    {
+        for(int i=1; s[i]!='\0'; i++)
+    {
+        if(s[i]>=65 && s[i]<=90)
+        count++;
+    }
+    }
+    return count;
+}
+
