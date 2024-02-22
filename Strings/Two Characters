@@ -49,3 +49,4 @@ int alternate(char* s)
     }
     
     return max_length;
+}
