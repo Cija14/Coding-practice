@@ -1,0 +1,30 @@
+https://www.hackerrank.com/challenges/time-conversion/problem?isFullScreen=true
+
+char* timeConversion(char* s) 
+{
+    char* c = malloc(9 * sizeof(char));
+    strncpy(c,s,8);
+    c[8] = '\0';
+     
+     if(s[8] == 'A' && s[9] == 'M')
+     {
+         if(strncmp(s,"12",2)==0)
+         {
+             c[0] = '0';
+             c[1] = '0';
+         }  
+     }
+     else if(s[8] == 'P' && s[9] == 'M')
+     {
+        if(strncmp(s,"12",2) != 0)
+        {
+            int hour1 = s[0] - '0';
+            int hour2 = s[1] - '0';
+            int hourcalc = (hour1 * 10) + hour2 + 12;
+            c[0] = (hourcalc / 10) + '0';
+            c[1] = (hourcalc % 10) + '0';
+        }   
+     } 
+     
+     return c;
+}
