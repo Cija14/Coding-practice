@@ -1,0 +1,32 @@
+https://www.hackerrank.com/challenges/counter-game/problem?isFullScreen=true
+
+char* counterGame(long n) 
+{
+    static char s1[] = "Louise";
+    static char s2[] = "Richard";
+    
+    int currentPlayer = 1;
+    while(n>1)
+    {
+       if(n&(n-1)==0)
+       {
+           n=n/2;
+        }
+        
+        else
+        {
+        long highestpowerof2 = 1;
+        while(highestpowerof2<n)
+        {
+            highestpowerof2=highestpowerof2<<1;
+        }
+        highestpowerof2 >>= 1;
+        n = n - highestpowerof2;
+        } 
+        
+        // Toggle the player
+        currentPlayer = (currentPlayer == 1) ? 2 : 1;
+    }
+    
+   return (currentPlayer == 1) ? s2 : s1;
+}
