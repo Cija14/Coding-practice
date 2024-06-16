@@ -1,0 +1,43 @@
+
+#include <stdio.h>
+
+void findthelement(int arr[], int n, int *missing, int *repeating)
+{
+    long long practical_sum, practical_sq_sum = 0;
+    practical_sum = (long long)(n * (n+1)) / 2;
+    practical_sq_sum = (long long)(n * (n+1) * (2*n + 1) / 6);
+    
+    long long actual_sum, actual_sq_sum = 0;
+    
+    for(int i=0; i<n; i++)
+    {
+        actual_sum += (long long)arr[i];
+        actual_sq_sum += (long long)(arr[i] * arr[i]);
+    }
+    
+    long long sum_diff, sq_sum_diff, sum_plus_diff = 0;
+    
+    sum_diff = practical_sum - actual_sum;
+    sq_sum_diff = practical_sq_sum - actual_sq_sum;
+    
+    sum_plus_diff = sq_sum_diff / sum_diff;
+    
+    *missing = (int)((sum_plus_diff + sum_diff) / 2);
+    *repeating = (int)(*missing - sum_diff);
+    
+}
+
+
+int main()
+{
+    int nums[] = {4, 3, 6, 2, 1, 1};
+    int n = sizeof(nums) / sizeof(nums[0]);
+    int missing, repeating;
+
+    findthelement(nums, n, &missing, &repeating);
+
+    printf("The repeating number is %d\n", repeating);
+    printf("The missing number is %d\n", missing);
+
+    return 0;
+}
