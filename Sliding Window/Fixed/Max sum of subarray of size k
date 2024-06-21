@@ -1,1 +1,49 @@
+#include <stdio.h>
+#include <limits.h>
 
+int maxSumSubarrayofSizek(int arr[], int n, int k)
+{
+    if(n < k)
+    {
+        return INT_MIN;
+    }
+    
+    
+    int i=0, j=0;
+    int max_sum = INT_MIN;
+    int window_sum = 0;
+    
+    while(j<n)
+    {
+        window_sum = window_sum + arr[j];
+        if(j-i+1 < k)
+        {
+            j++;
+        }
+        
+        else if(j-i+1 == k)
+        {
+            if(window_sum > max_sum)
+            {
+                max_sum = window_sum;
+            }
+            window_sum = window_sum - arr[i];
+            i++;
+            j++;
+        }
+        
+    }
+    return max_sum;
+}
+
+int main()
+{
+    int arr[] = {2,5,1,8,2,9,1};
+    int size = sizeof(arr)/sizeof(arr[0]);
+    int k = 3;
+    
+    int result = maxSumSubarrayofSizek(arr, size,k);
+    printf("%d",result);
+
+    return 0;
+}
