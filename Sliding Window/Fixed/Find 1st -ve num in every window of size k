@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+// Function to print the first negative number in every window of size k
+void firstNegativeNumberInWindow(int arr[], int n, int k) {
+    int i = 0, j = 0;
+    int window[k]; // Queue to store indices of negative numbers
+    int front = 0, rear = 0; // Pointers to the front and rear of the queue
+
+    while (j < n) {
+        // If the current element is negative, add its index to the queue
+        if (arr[j] < 0) {
+            window[rear++] = j;
+        }
+
+        // Check if the window size is less than k
+        if (j - i + 1 < k) {
+            j++;
+        } 
+        
+        
+        else if (j - i + 1 == k) { // When the window size reaches k
+            // Check if there is any negative number in the current window
+            if (front < rear && window[front] >= i) {
+                printf("%d ", arr[window[front]]);
+            } else {
+                printf("0 "); // If no negative number, print 0
+            }
+
+            // Remove elements that are out of the current window
+            while (front < rear && window[front] <= i) {
+                front++;
+            }
+
+            // Slide the window forward
+            i++;
+            j++;
+        }
+    }
+}
+
+int main() {
+    int arr[] = {12, -1, -7, 8, -15, 30, 16, 28};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int k = 3;
+
+    printf("First negative number in every window of size %d:\n", k);
+    firstNegativeNumberInWindow(arr, size, k);
+
+    return 0;
+}
