@@ -1,0 +1,53 @@
+
+#include <stdio.h>
+#include <string.h>
+#define MAX_CHAR 256
+
+
+int howmanyanagrams(char *text, char *pattern)
+{
+    int text_len = strlen(text);
+    int pattern_len = strlen(pattern);
+    
+    int pattern_count[MAX_CHAR] = {0};
+    int window_count[MAX_CHAR] = {0};
+    
+    int count = 0;
+    
+    for(int i=0; i<pattern_len; i++)
+    {
+        pattern_count[(int)pattern[i]]++;
+        window_count[(int)text[i]]++;
+    }
+    
+    if(memcmp(pattern_count,window_count,sizeof(pattern_count))==0)
+    {
+        count++;
+    }
+    
+    for(int i=pattern_len; i<text_len; i++)
+    {
+        window_count[(int)text[i]]++;
+        
+        window_count[(int)text[i - pattern_len]]--;
+        
+        
+    if(memcmp(pattern_count,window_count,sizeof(pattern_count))==0)
+    {
+        count++;
+    }
+    }
+    
+    return count;
+    
+}
+
+int main()
+{
+    char text[] = "cbaebabacd";
+    char pattern[] = "abc";
+    
+    printf("%d",howmanyanagrams(text, pattern));
+
+    return 0;
+}
