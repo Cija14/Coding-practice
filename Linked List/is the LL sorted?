@@ -1,1 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <limits.h>
 
+bool issorted(struct Node *p)
+{
+    int x = INT_MIN;
+    
+    while(p!=NULL)
+    {
+        if(p->data<x)
+        {
+            return false;
+        }
+        else
+        {
+            x = p->data;
+            p = p->next;
+        }
+    }
+    return true;
+}
+
+int main()
+{
+    int A[]={10,20,30,40,55,50};
+    create(A,6);
+    if(issorted(first))
+    {
+        printf("yes");
+    }
+    else printf("no");
+
+
+    return 0;
+}
