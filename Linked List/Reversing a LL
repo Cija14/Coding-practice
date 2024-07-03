@@ -24,3 +24,21 @@ void ReverseElements(struct Node *p)
     }
 }
 -------------------------------
+
+METHOD-2:
+//3 pts are required
+void ReverseLinks(struct Node *p)
+{
+    struct Node *q = NULL, *r = NULL;
+    while(p!=NULL)
+    {
+        //first, traverse
+        r = q;
+        q = p;
+        p = p->next;
+        
+        q->next = r;
+    }
+    first = q; //wherever q points is the first node after reversing
+}
+______________________________________________________________________
