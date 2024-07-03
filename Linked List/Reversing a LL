@@ -42,3 +42,17 @@ void ReverseLinks(struct Node *p)
     first = q; //wherever q points is the first node after reversing
 }
 ______________________________________________________________________
+
+METHOD-3:
+void Reverse_Recursion(struct Node *q, struct Node *p)
+{
+    if(p!=NULL)
+    {
+        Reverse_Recursion(p, p->next);
+        p->next = q;  // |q| | -> |p| |
+    }
+    else
+    {
+        first = q; //wherever q points is the first node after reversing
+    }
+}
