@@ -1,1 +1,26 @@
-
+Method-1:
+//reversing elements using auxiliary array
+void ReverseElements(struct Node *p)
+{
+    int Arr[6];
+    int i=0;
+    struct Node *q=p;
+    
+    while(q!=NULL)
+    {
+        Arr[i] = q->data;
+        q =q->next;
+        i++;
+    }
+    
+    //after q becomes NULL:
+    q = first; //q should come back to first pointer
+    i--; //i should go back to the last element
+    while(q!=NULL)
+    {
+        q->data = Arr[i];
+        q = q->next;
+        i--;
+    }
+}
+-------------------------------
