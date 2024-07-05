@@ -1,1 +1,169 @@
 
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    struct Node *prev;
+    int data;
+    struct Node *next;
+}*first=NULL;
+
+void create(int arr[], int n)
+{
+    struct Node *t, *last;
+    first = (struct Node*)malloc(sizeof(struct Node));
+    first->prev = NULL;
+    first->data = arr[0];
+    first->next = NULL;
+    last = first;
+    
+    for(int i=1; i<n; i++)
+    {
+        t = (struct Node*)malloc(sizeof(struct Node));
+        t->data = arr[i];
+        t->next = NULL;
+        t->prev = last;
+        last->next = t;
+        last = t;
+    }
+}
+
+void Display(struct Node *p)
+{
+    while(p != NULL)
+    {
+        printf("%d ", p->data);
+        p = p->next;
+    }
+    printf("\n");
+}
+
+int Length(struct Node *p)
+{
+    int count=0;
+    while(p != NULL)
+    {
+        count++;
+        p = p->next;
+    }
+    return count;
+}
+
+void Insert(int pos, int x)
+{
+    struct Node *p=first, *t;
+    if(pos < 0 || pos > Length(first))
+    {
+        return;
+    }
+    else
+    {
+        t = (struct Node*)malloc(sizeof(struct Node));
+        t->data = x;
+        if(pos==0)
+        {
+            if(first==NULL)
+            {
+                t->next = NULL;
+                t->prev = NULL;
+                first = t;
+            }
+            else
+            {
+            t->next = first;
+            t->prev = NULL;
+            first->prev = t;
+            first = t;
+                
+            }
+        }
+        else
+        {
+            for(int i=0; i<pos-1 && p; i++)
+            {
+                p = p->next;
+            }
+            t->next = p->next;
+            if (p->next != NULL)
+            {
+                p->next->prev = t;
+            }
+            p->next = t;
+            t->prev = p;
+        }
+    }
+}
+
+int Delete(int pos)
+{
+    int x=-1;
+    struct Node *p = first, *q = NULL;
+    if(pos<1 || pos > Length(p)) return -1;
+    if(pos==1)
+    {
+        x=p->data;
+        first = first->next;
+        if(first) first->prev=NULL;
+        free(p);
+    }
+    else
+    {
+        for(int i=0; i<pos-1 && p; i++)
+        {
+            q = p;
+            p = p->next;
+        }
+        if(p!=NULL)
+        {
+            x = p->data;
+            q->next = p->next;
+            if(p->next!=NULL) //important to check this
+            {
+                p->next->prev = q;
+            }
+            free(p);
+        }
+        
+    }
+    return x;
+}
+
+void Reverse(struct Node *p)
+{
+    struct Node *temp;
+    while(p)
+    {
+        temp = p->next;
+        p->next = p->prev;
+        p->prev = temp;
+        p = p->prev;
+        
+        if(p!=NULL && p->next == NULL )
+        {
+            first = p;
+        }
+    }
+}
+int main()
+{
+    int Arr[] = {2,3,4,5};
+    int n = 4;
+    create(Arr, n);
+    Display(first);
+    
+    //int length = printf("length: %d",Length(first));
+    
+    //printf("\n");
+    //Insert(0,9);
+    //Display(first);
+    
+    //printf("\n");
+    //int deleted_element = printf("the num is %d\n",Delete(4));
+    //Display(first);
+    
+    Reverse(first);
+    Display(first);
+    return 0;
+}
+
