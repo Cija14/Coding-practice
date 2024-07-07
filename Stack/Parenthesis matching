@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+struct Node
+{
+    char data;
+    struct Node *next;
+}*top = NULL;
+
+void Display()
+{
+    struct Node *p=top;
+    while(p)
+    {
+        printf("%d ",p->data);
+        p = p->next;
+    }
+}
+
+void push(char x)
+{
+    struct Node *t;
+    t = (struct Node*)malloc(sizeof(struct Node));
+    if(t == NULL) printf("stack is full");
+    else
+    {
+        t->data = x;
+        t->next = top;
+        top = t;
+    }
+}
+
+char pop()
+{
+    struct Node *t=top;
+    int x = CHAR_MIN;
+    if(top == NULL) printf("stack underflow");
+    else
+    {
+        t = top;
+        x = top->data;
+        top = top->next;
+        free(t);
+    }
+    return x;
+}
+
+int isBalanced(char expr[])
+{
+    for(int i=0;expr[i]!='\0';i++)
+    {
+        if(expr[i] == '(') push(expr[i]);
+        else if(expr[i] == ')')
+        {
+            //if stack is empty
+            if(top==NULL) return 0;
+            else pop();
+        }
+    }
+    if(top==NULL) return 1; 
+    else return 0;
+}
+int main()
+{
+    char expr[] = "((a+b)*(c-d))";
+    
+    printf("%d",isBalanced(expr));
+    return 0;
+}
