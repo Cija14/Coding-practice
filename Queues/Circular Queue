@@ -1,1 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Queue
+{
+    int size;
+    int front; //used for deletion
+    int rear; //used for insertion
+    int *Q; //for array
+};
+
+void create(struct Queue *q)
+{
+    printf("Enter the size");
+    scanf("%d",&q->size);
+    q->Q = (int *)malloc(q->size * sizeof(int));
+    q->front = q->rear = 0; //CHANGES FROM NORMAL QUEUE
+    
+}
+
+//call by address
+void enqueue(struct Queue *q, int x)
+{
+    //REMEMBER THIS FOR TRAVERSING
+    if((q->rear+1) % q->size == q->front) printf("Queue is full");
+    else
+    {
+        //REMEMBER THIS FOR TRAVERSING
+        q->rear = (q->rear + 1) % q->size;
+        q->Q[q->rear] = x;
+    }
+}
+
+int dequeue(struct Queue *q)
+{
+    int x = -1;
+    if(q->front == q->rear) printf("queue is empty");
+    else
+    {
+        //REMEMBER THIS FOR TRAVERSING
+        q->front = (q->front + 1) % q->size;
+        x = q->Q[q->front];
+    }
+    return x;
+}
+
+
+//CHANGES FULLY - NOTE THE WHOLE CODE
+void Display(struct Queue q)
+{
+    //using modulo operation to wrap around if necessary
+    int i= (q.front+1)%q.size;
+    do
+    {
+        printf("%d ",q.Q[i]);
+        // Move to the next position, wrapping around if needed
+        i = (i+1)%q.size;
+        
+    } while(i!=(q.rear+1)%q.size); // Stop when we reach the position after 'rear'
+}
+
+
+int isEmpty(struct Queue q)
+{
+    return (q.rear == q.front)?1:0;
+}
+
+int isFull(struct Queue q)
+{
+    return ((q.rear + 1) % q.size)?1:0;
+}
+int main()
+{
+    struct Queue q;
+    create(&q);
+    
+    enqueue(&q,10);
+    enqueue(&q,20);
+    enqueue(&q,30);
+    
+    Display(q);
+
+    return 0;
+}
 
