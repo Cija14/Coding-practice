@@ -1,0 +1,29 @@
+
+//https://www.hackerrank.com/challenges/insert-a-node-at-the-tail-of-a-linked-list/problem?isFullScreen=true
+
+SinglyLinkedListNode* insertNodeAtTail(SinglyLinkedListNode* head, int data) 
+{
+    struct SinglyLinkedListNode *newNode = head;
+    newNode = (struct SinglyLinkedListNode *)malloc(sizeof(struct SinglyLinkedListNode));
+    newNode->data = data;
+    newNode->next = NULL;
+    
+    // If the list is empty, the new node becomes the head
+    if(head == NULL)
+    {
+        head = newNode;
+    }
+    else
+    // Traverse to the end of the list
+    {
+        struct SinglyLinkedListNode *temp = head;
+        while(temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        
+        temp->next = newNode;
+    }
+    return head;
+
+}
