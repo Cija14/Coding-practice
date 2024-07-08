@@ -1,1 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+}*front = NULL, *rear = NULL;
+
+
+void enqueue(int x)
+{
+    struct Node *t = front;
+    //check full condition
+    t = (struct Node*)malloc(sizeof(struct Node));
+    if(t==NULL) printf("queue is full");
+    else
+    {
+        t->data = x;
+        t->next = NULL;
+        //check if the queue is empty ie., if t is the first node that is created
+        if(front == NULL) front = rear = t;
+        else
+        {
+            rear->next = t;
+            rear = t;
+        }
+    }
+}
+
+int dequeue()
+{
+    struct Node *p;
+    int x = -1;
+    //check if the queue is empty
+    if(front == NULL) printf("queue is empty");
+    else
+    {
+        p = front;
+        x = front->data;
+        front = front->next;
+        free(p);
+    }
+    return x;
+}
+
+void Display()
+{
+    struct Node *p=front;
+    while(p)
+    {
+        printf("%d ", p->data);
+        p = p->next;
+    }
+}
+int main()
+{
+    enqueue(6);
+    enqueue(9);
+    enqueue(5);
+
+    Display();
+
+    return 0;
+}
 
