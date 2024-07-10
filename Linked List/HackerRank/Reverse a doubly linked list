@@ -1,0 +1,22 @@
+DoublyLinkedListNode* reverse(DoublyLinkedListNode* llist) 
+{
+    if(llist == NULL) return llist;
+    struct DoublyLinkedListNode *temp = NULL, *p = llist;
+    
+    while(p)
+    {
+        //swap prev and next nodes of the current node
+        temp = p->next;
+        p->next = p->prev;
+        p->prev = temp;
+        
+        //Move llist to the current node (this will eventually be the new head)
+        llist = p;
+        
+        //p goes to the next node but it is technically prev cuz of the swap.
+        p = p->prev;
+        
+    }
+    
+     return llist;
+}
